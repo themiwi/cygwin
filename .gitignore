@@ -1,0 +1,4 @@
+# build directories
+/*/*-[1-9]/
+# source tarballs (assume they can be downloaded at any time)
+*.tar.bz2
