@@ -1,0 +1,33 @@
+NAME="tmux"
+# 1.8 is the last stable version, b3de4a3 the git commit hash and 271 the
+# number of commits since the last stable version (to have a monotonically
+# increasing version number). I.e. the output of "git describe".
+VERSION="1.8-271-gb3de4a3"
+RELEASE="1"
+CATEGORY="Utils"
+SUMMARY="Terminal multiplexer"
+DESCRIPTION="tmux enables a number of terminals (or windows) to be accessed and
+controlled from a single terminal like screen. tmux runs as a server-client
+system. A server is created automatically when necessary and holds a number of
+sessions, each of which may have a number of windows linked to it. Any number
+of clients may connect to a session, or the server may be controlled by issuing
+commands with tmux. Communication takes place through a socket, by default
+placed in /tmp. Moreover tmux provides a consistent and well-documented command
+interface, with the same syntax whether used interactively, as a key binding,
+or from the shell. It offers a choice of vim or Emacs key layouts."
+HOMEPAGE="http://${PN}.sourceforge.net"
+
+# Build from git because Cygwin support hasn't made it into the stable version
+# as of now.
+GIT_URI="http://git.code.sf.net/p/${PN}/${PN}-code"
+GIT_REV="${PV##*-g}"
+GIT_MODULE="${PN}"
+inherit git
+
+DEPEND="autoconf automake pkg-config libtool gettext-devel make git
+libncurses-devel libevent-devel"
+
+# tmux includes ncurses as <ncurses.h>.
+CYGCONF_ARGS="CPPFLAGS=-I/usr/include/ncurses"
+
+DIFF_EXCLUDES="*.mdoc"
