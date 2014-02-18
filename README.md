@@ -1,4 +1,4 @@
-cygwin
-======
+My Cygwin Packages
+==================
 
-My Cygwin packages
+This repository contains the sources for my own Cygwin packages.
