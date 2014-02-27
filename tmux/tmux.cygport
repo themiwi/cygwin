@@ -2,7 +2,7 @@ NAME="tmux"
 # 1.8 is the last stable version, b3de4a3 the git commit hash and 271 the
 # number of commits since the last stable version (to have a monotonically
 # increasing version number). I.e. the output of "git describe".
-VERSION="1.8-271-gb3de4a3"
+VERSION="1.9a"
 RELEASE="1"
 CATEGORY="Utils"
 SUMMARY="Terminal multiplexer"
