@@ -24,16 +24,9 @@ GIT_MODULE="${PN}"
 inherit git
 
 DEPEND="autoconf automake pkg-config libtool gettext-devel make git
-libevent-devel"
+libevent-devel libncursesw-devel"
 
-if defined ARCH_x86_64
-then
-  DEPEND+=" libncursesw-devel"
-else
-  DEPEND+=" libncurses-devel"
-fi
-
-# tmux includes ncurses as <ncurses.h>.
-CYGCONF_ARGS="CPPFLAGS=-I/usr/include/ncurses"
+# tmux includes ncurses as <ncurses.h> and doesn't look for libncursesw
+CYGCONF_ARGS="CPPFLAGS=-I/usr/include/ncursesw LIBS=-lncursesw"
 
 DIFF_EXCLUDES="*.mdoc"
