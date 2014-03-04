@@ -1,6 +1,4 @@
 NAME="tmux"
-# The output of "git describe", so that for development snapshots a meaningful,
-# reproducible version number is created.
 VERSION="1.9a"
 RELEASE="1"
 CATEGORY="Utils"
@@ -15,13 +13,7 @@ placed in /tmp. Moreover tmux provides a consistent and well-documented command
 interface, with the same syntax whether used interactively, as a key binding,
 or from the shell. It offers a choice of vim or Emacs key layouts."
 HOMEPAGE="http://${PN}.sourceforge.net"
-
-# Build from git because Cygwin support hasn't made it into the stable version
-# as of now.
-GIT_URI="http://git.code.sf.net/p/${PN}/${PN}-code"
-GIT_REV="${PV##*-g}"
-GIT_MODULE="${PN}"
-inherit git
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 DEPEND="autoconf automake pkg-config libtool gettext-devel make git
 libevent-devel libncursesw-devel"
