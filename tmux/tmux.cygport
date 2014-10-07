@@ -1,6 +1,6 @@
 NAME="tmux"
 VERSION="1.9a"
-RELEASE="2"
+RELEASE="3"
 CATEGORY="Utils"
 SUMMARY="Terminal multiplexer"
 DESCRIPTION="tmux enables a number of terminals (or windows) to be accessed and
