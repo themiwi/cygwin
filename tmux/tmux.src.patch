@@ -1,0 +1,25 @@
+From: J Raynor <jxraynor@gmail.com>
+Origin: http://sourceforge.net/p/tmux/mailman/message/32888070/
+Subject: Fix race condition on Cygwin leading to a defunct process
+diff --git a/client.c b/client.c
+--- a/client.c
++++ b/client.c
+@@ -437,15 +437,11 @@ client_signal(int sig, unused short events, unused void *data)
+ 	struct sigaction sigact;
+ 	int		 status;
+ 
+-	if (!client_attached) {
+-		switch (sig) {
+-		case SIGCHLD:
++	if (sig == SIGCHLD) {
+ 			waitpid(WAIT_ANY, &status, WNOHANG);
+-			break;
+-		case SIGTERM:
++	} else if (!client_attached) {
++		if (sig == SIGTERM)
+ 			event_loopexit(NULL);
+-			break;
+-		}
+ 	} else {
+ 		switch (sig) {
+ 		case SIGHUP:
