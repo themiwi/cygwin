@@ -1,5 +1,5 @@
 NAME="tmux"
-VERSION="2.0"
+VERSION="2.1"
 RELEASE="1"
 CATEGORY="Utils"
 SUMMARY="Terminal multiplexer"
@@ -12,8 +12,8 @@ commands with tmux. Communication takes place through a socket, by default
 placed in /tmp. Moreover tmux provides a consistent and well-documented command
 interface, with the same syntax whether used interactively, as a key binding,
 or from the shell. It offers a choice of vim or Emacs key layouts."
-HOMEPAGE="http://${PN}.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="http://${PN}.github.io"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 DEPEND="autoconf automake pkg-config libtool gettext-devel make git
 libevent-devel libncursesw-devel"
