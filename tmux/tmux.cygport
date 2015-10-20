@@ -16,7 +16,7 @@ HOMEPAGE="http://${PN}.github.io"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 DEPEND="autoconf automake pkg-config libtool gettext-devel make git
-libevent-devel libncursesw-devel"
+libevent-devel libncurses-devel"
 
 # tmux includes ncurses as <ncurses.h> and doesn't look for libncursesw
 CYGCONF_ARGS="CPPFLAGS=-I/usr/include/ncursesw LIBS=-lncursesw"
