@@ -1,0 +1,185 @@
+--- CYGWIN-PATCHES/cygwin-announce.mail	1970-01-01 01:00:00.000000000 +0100
++++ CYGWIN-PATCHES/cygwin-announce.mail	2018-07-18 14:19:19.163533600 +0200
+@@ -0,0 +1,61 @@
++To: cygwin-announce@cygwin.com
++Subject: Updated: python-paramiko 2.4.1 -- Python library for SSH2 connections
++--text follows this line--
++
++PACKAGE DESCRIPTION
++===================
++
++Homepage: http://www.paramiko.org
++License : LGPL
++
++This is a library for making SSH2 connections (client or server).
++Emphasis is on using SSH2 as an alternative to SSL for making secure
++connections between python scripts. All major ciphers and hash methods
++are supported. SFTP client and server mode are both supported too.
++
++CHANGES SINCE LAST RELEASE
++==========================
++
++- Package adoption by me.
++- Updated to Paramiko 2.4.1
++- Add build for Python 3
++- See Homepage for release information.
++- Cygwin packaging update (migrated to Cygport).
++
++INSTALL OR UPGRADE NOTES
++========================
++
++Standard install.
++
++CYGWIN INSTALLATION INFORMATION
++===============================
++
++To install this package, click on the "Install Cygwin now" link on the
++<http://cygwin.com/> web page. This downloads setup.exe to your
++system. Then, run setup and answer all of the questions. You'll find
++the package listed in the "All" category. After installation, read the
++documentation at directories:
++
++    /usr/share/doc/<package>/*
++    /usr/share/doc/Cygwin/<package-version>.README
++
++If you have questions or comments, please send them to the Cygwin
++mailing list at <cygwin(at)cygwin.com>.
++
++CYGWIN-ANNOUNCE UNSUBSCRIBE INFO
++================================
++
++This message has been sent to cygwin-announce list.
++
++If you want to unsubscribe from the mailing list, look at the
++"List-Unsubscribe: " tag in the email header of this message. Send
++email to the address specified there. It will be in the format:
++
++    cygwin-announce-unsubscribe-you=yourdomain.com(at)cygwin.com
++
++More information on unsubscribing can be found:
++
++    http://sources.redhat.com/lists.html#unsubscribe-simple
++
++Please read *all* of the information on unsubscribing that is available
++starting at the above URL.
+--- CYGWIN-PATCHES/python2-paramiko.README	1970-01-01 01:00:00.000000000 +0100
++++ CYGWIN-PATCHES/python2-paramiko.README	2018-07-18 21:32:59.271087000 +0200
+@@ -0,0 +1,117 @@
++python-paramiko
++------------------------------------------
++
++Python library for SSH2 connections
++
++This is a library for making SSH2 connections (client or server).
++Emphasis is on using SSH2 as an alternative to SSL for making secure
++connections between python scripts. All major ciphers and hash methods
++are supported. SFTP client and server mode are both supported too.
++
++Runtime requirements:
++  cygwin
++  python2 or python3
++  pythonX-cryptography pythonX-pyasn1 pythonX-six pythonX-bcrypt pythonX-PyNaCl
++    (where X is 2 or 3 depending on the Python major version)
++
++Build requirements:
++  cygwin
++  cygport
++  python2
++  python3
++
++Canonical homepage:
++  http://www.paramiko.org
++  https://packages.debian.org/python-paramiko
++
++Canonical download:
++  See above
++
++Version control repository:
++  git clone https://github.com/paramiko/paramiko.git
++
++Mailing List:
++  paramiko@librelist.com, see http://librelist.com/
++
++Forum / Wiki:
++
++IRC channel:
++  #paramiko on Freenode
++
++Upstream contact:
++  Author: Jeff Forcier <jeff@bitprophet.org>, Robey Pointer <robey@lag.net>
++  Bugs: https://github.com/paramiko/paramiko/issues
++
++License:
++  LGPL
++
++Language:
++  Python
++
++------------------------------------
++
++Build instructions:
++  unpack python-paramiko-2.4.1-1-src.tar.bz2
++    if you use setup to install this src package, it will be
++    unpacked under /usr/src automatically
++  cd /usr/src
++  cygport python-paramiko-2.4.1-1-src/python-paramiko.cygport all
++
++This will create:
++  python-paramiko-2.4.1-1.tar.xz
++  python-paramiko-2.4.1-1-src.tar.xz
++
++-------------------------------------------
++
++Files included in the binary distro:
++  See Cygwin package archive
++
++------------------
++
++Port Notes:
++
++----- version 2.4.1-1 -----
++- New upstream release 2018-07-18 Michael Wild
++- Moved to cygport packaging
++
++----- version 1.15.2+20150921+git7b33770-1 -----
++- New upstream release 2015-09-28 Jari Aalto
++
++----- version 1.15.2+20150204+gitbdc60c3-2 -----
++- New upstream release 2015-02-26 Jari Aalto
++- Add python-crypto to setup.hint. Thanks to
++  Jason Alan Palmer <jalanpalmer@gmail.com>
++
++----- version 1.15.2+20150204+gitbdc60c3-1 -----
++- New upstream release 2015-02-13 Jari Aalto
++
++----- version 1.14+20140525+gite811e71-1 -----
++- New upstream release 2014-06-14 Jari Aalto
++
++----- version 1.13.0+20140406+git57e6473-1 -----
++- New upstream release 2014-04-10 Jari Aalto
++- Python 2.7.5
++
++----- version 1.9.0+20130801+gite06b0f5-1 -----
++- New upstream release 2013-09-20 Jari Aalto
++
++----- version 1.7.7.1-2 -----
++- Python 2.7 2013-01-26 Jari Aalto
++
++----- version 1.7.7.1-1 -----
++- New upstream release 2012-09-15 Jari Aalto
++
++----- version 1.7.6-2 -----
++- Python 2.6 2010-06-17 Jari Aalto
++
++----- version 1.7.6-1 -----
++- New upstream release 2010-01-26 Jari Aalto
++
++----- version 1.7.4-1 -----
++- New upstream release 2008-08-20 Jari Aalto
++
++----- version 1.5.2-1 -----
++- Initial release 2007-09-30 Jari Aalto
++
++Cygwin port maintained by: Michael Wild <themiwi@gmail.com>
++Copyright (C) 2018 Michael Wild; Licenced under GPL v2 or later
++Copyright (C) 2007-2015 Jari Aalto; Licenced under GPL v2 or later
