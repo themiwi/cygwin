@@ -1,0 +1,28 @@
+inherit python-wheel
+
+NAME="python-PyNaCl"
+VERSION="1.2.1"
+RELEASE="1"
+CATEGORY="Python"
+SUMMARY="Python binding to the Networking and Cryptography (NaCl) library"
+DESCRIPTION="PyNaCl is a Python binding to libsodium, which is a fork of the
+Networking and Cryptography library. These libraries have a stated goal of
+improving usability, security and speed. It supports Python 2.7 and 3.4+ as
+well as PyPy 2.6+."
+PATCH_URI="python-PyNaCl.cygwin.patch"
+DEPEND="python2 python2-devel python3 python3-devel libsodium-devel"
+# Is this a bug in cygport/pythonX-wheel.cygclass? Why is not inluded automatically?
+python2_PyNaCl_CONTENTS+=" usr/share/doc/Cygwin/python2-${PYTHON_WHEEL_NAME}.README"
+python3_PyNaCl_CONTENTS+=" usr/share/doc/Cygwin/python3-${PYTHON_WHEEL_NAME}.README"
+
+# Instruct PyNaCl to use system-installed libsodium
+export SODIUM_INSTALL=system
+
+src_install() {
+  cd ${B}
+  python_wheel_install
+  # install Cygwin README
+  insinto /usr/share/doc/Cygwin
+  newins ${C}/README python2-${PYTHON_WHEEL_NAME}.README
+  newins ${C}/README python3-${PYTHON_WHEEL_NAME}.README
+}
