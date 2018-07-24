@@ -2,7 +2,7 @@
 +++ CYGWIN-PATCHES/cygwin-announce.mail	2018-07-18 23:52:41.131444600 +0200
 @@ -0,0 +1,57 @@
 +To: cygwin-announce@cygwin.com
-+Subject: Updated: python-PyNaCl 1.2.1 -- Python binding to the Networking and Cryptography (NaCl) library
++Subject: Updated: python-nacl 1.2.1 -- Python binding to the Networking and Cryptography (NaCl) library
 +--text follows this line--
 +
 +PACKAGE DESCRIPTION
@@ -61,7 +61,7 @@
 --- CYGWIN-PATCHES/README	1970-01-01 01:00:00.000000000 +0100
 +++ CYGWIN-PATCHES/README	2018-07-18 23:52:55.015444600 +0200
 @@ -0,0 +1,78 @@
-+python-PyNaCl
++python-nacl
 +------------------------------------------
 +
 +Python binding to the Networking and Cryptography (NaCl) library
@@ -115,15 +115,15 @@
 +------------------------------------
 +
 +Build instructions:
-+  unpack python-PyNaCl-1.2.1-1-src.tar.bz2
++  unpack python-nacl-1.2.1-1-src.tar.bz2
 +    if you use setup to install this src package, it will be
 +    unpacked under /usr/src automatically
 +  cd /usr/src
-+  cygport python-PyNaCl-1.2.1-1-src/python-PyNaCl.cygport all
++  cygport python-nacl-1.2.1-1-src/python-nacl.cygport all
 +
 +This will create:
-+  python-PyNaCl-1.2.1-1.tar.xz
-+  python-PyNaCl-1.2.1-1-src.tar.xz
++  python-nacl-1.2.1-1.tar.xz
++  python-nacl-1.2.1-1-src.tar.xz
 +
 +-------------------------------------------
 +
