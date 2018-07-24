@@ -78,7 +78,7 @@
 +Runtime requirements:
 +  cygwin
 +  python2 or python3
-+  pythonX-cryptography pythonX-pyasn1 pythonX-six pythonX-bcrypt pythonX-PyNaCl
++  pythonX-cryptography pythonX-pyasn1 pythonX-six pythonX-bcrypt pythonX-nacl
 +    (where X is 2 or 3 depending on the Python major version)
 +
 +Build requirements:

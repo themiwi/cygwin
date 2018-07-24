@@ -17,8 +17,8 @@ ARCH=noarch
 python2_paramiko_CONTENTS+=" usr/share/doc/Cygwin/python2-${PYTHON_WHEEL_NAME}.README"
 python3_paramiko_CONTENTS+=" usr/share/doc/Cygwin/python3-${PYTHON_WHEEL_NAME}.README"
 
-python2_paramiko_REQUIRES="python2-cryptography python2-PyNaCl python2-bcrypt"
-python3_paramiko_REQUIRES="python3-cryptography python3-PyNaCl python3-bcrypt"
+python2_paramiko_REQUIRES="python2-cryptography python2-nacl python2-bcrypt"
+python3_paramiko_REQUIRES="python3-cryptography python3-nacl python3-bcrypt"
 
 src_install() {
   cd ${B}
