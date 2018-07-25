@@ -1,0 +1,145 @@
+--- CYGWIN-PATCHES/README	1970-01-01 01:00:00.000000000 +0100
++++ CYGWIN-PATCHES/README	2018-07-25 10:15:22.512989500 +0200
+@@ -0,0 +1,82 @@
++python-nacl
++------------------------------------------
++
++Pure-Python library built as a PDF toolkit
++
++PyPDF2 is a pure-python PDF library capable of splitting, merging together,
++cropping, and transforming the pages of PDF files. It can also add custom data,
++viewing options, and passwords to PDF files. It can retrieve text and metadata
++from PDFs as well as merge entire files together.
++
++Runtime requirements:
++  cygwin
++  python2 or python3
++
++Build requirements:
++  cygwin
++  cygport
++  python2
++  python3
++
++Canonical homepage:
++  https://mstamy2.github.io/PyPDF2
++  https://packages.debian.org/python-pypdf2
++
++Canonical download:
++  See above
++
++Version control repository:
++  git clone https://github.com/mstamy2/PyPDF2.git
++
++
++Mailing List:
++
++Forum / Wiki:
++
++IRC channel:
++
++Upstream contact:
++  Author: PyPDF2@Phaseit.net
++  Bugs: https://github.com/mstamy2/PyPDF2
++
++License:
++  BSD-3-clause
++
++Language:
++  Python
++
++------------------------------------
++
++Build instructions:
++  unpack python-pypdf2-1.26.0-1-src.tar.xz
++    if you use setup to install this src package, it will be
++    unpacked under /usr/src automatically
++  cd /usr/src
++  cygport python-pypdf2-1.26.0-1/python-pypdf2.cygport all
++
++This will create:
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python-pypdf2-1.26.0-1-src.tar.xz
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python-pypdf2-1.26.0-1.hint
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python-pypdf2-1.26.0-1.tar.xz
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python2-paramiko
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python2-paramiko/python2-pypdf2-1.26.0-1.hint
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python2-paramiko/python2-pypdf2-1.26.0-1.tar.xz
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python3-paramiko
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python3-paramiko/python3-pypdf2-1.26.0-1.hint
++  python-pypdf2-1.26.0-1.noarch/dist/python-paramiko/python3-paramiko/python3-pypdf2-1.26.0-1.tar.xz
++
++-------------------------------------------
++
++Files included in the binary distro:
++  See Cygwin package archive
++
++------------------
++
++Port Notes:
++
++----- version 1.5.2-1 -----
++- Initial release 2018-07-25 Michael Wild
++
++Cygwin port maintained by: Michael Wild <themiwi@gmail.com>
++Copyright (C) 2018 Michael Wild; Licenced under MIT
+--- CYGWIN-PATCHES/cygwin-announce.mail	1970-01-01 01:00:00.000000000 +0100
++++ CYGWIN-PATCHES/cygwin-announce.mail	2018-07-25 10:07:25.812444700 +0200
+@@ -0,0 +1,57 @@
++To: cygwin-announce@cygwin.com
++Subject: Updated: python-pypdf2 1.26.0 -- A Pure-Python library built as a PDF toolkit
++--text follows this line--
++
++PACKAGE DESCRIPTION
++===================
++
++Homepage: https://mstamy2.github.io/PyPDF2
++License : BSD-3-clause
++
++PyPDF2 is a pure-python PDF library capable of splitting, merging together,
++cropping, and transforming the pages of PDF files. It can also add custom data,
++viewing options, and passwords to PDF files. It can retrieve text and metadata
++from PDFs as well as merge entire files together.
++
++CHANGES SINCE LAST RELEASE
++==========================
++
++- New package.
++
++INSTALL OR UPGRADE NOTES
++========================
++
++Standard install.
++
++CYGWIN INSTALLATION INFORMATION
++===============================
++
++To install this package, click on the "Install Cygwin now" link on the
++<http://cygwin.com/> web page. This downloads setup.exe to your
++system. Then, run setup and answer all of the questions. You'll find
++the package listed in the "All" category. After installation, read the
++documentation at directories:
++
++    /usr/share/doc/<package>/*
++    /usr/share/doc/Cygwin/<package-version>.README
++
++If you have questions or comments, please send them to the Cygwin
++mailing list at <cygwin(at)cygwin.com>.
++
++CYGWIN-ANNOUNCE UNSUBSCRIBE INFO
++================================
++
++This message has been sent to cygwin-announce list.
++
++If you want to unsubscribe from the mailing list, look at the
++"List-Unsubscribe: " tag in the email header of this message. Send
++email to the address specified there. It will be in the format:
++
++    cygwin-announce-unsubscribe-you=yourdomain.com(at)cygwin.com
++
++More information on unsubscribing can be found:
++
++    http://sources.redhat.com/lists.html#unsubscribe-simple
++
++Please read *all* of the information on unsubscribing that is available
++starting at the above URL.

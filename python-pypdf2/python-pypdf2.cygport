@@ -1,0 +1,27 @@
+NAME="python-pypdf2"
+ORIG_PN="PyPDF2"
+VERSION="1.26.0"
+RELEASE="1"
+CATEGORY="Python"
+SUMMARY="Pure-Python library built as a PDF toolkit"
+DESCRIPTION="PyPDF2 is a pure-python PDF library capable of splitting, merging
+together, cropping, and transforming the pages of PDF files. It can also add
+custom data, viewing options, and passwords to PDF files. It can retrieve text
+and metadata from PDFs as well as merge entire files together."
+DEPEND="python2 python3"
+ARCH=noarch
+PATCH_URI="python-pypdf2.cygwin.patch"
+
+inherit python-wheel
+
+# Is this a bug in cygport/pythonX-wheel.cygclass? Why is not inluded automatically?
+python2_pypdf2_CONTENTS+=" usr/share/doc/Cygwin/python2-${PYTHON_WHEEL_NAME}.README"
+python3_pypdf2_CONTENTS+=" usr/share/doc/Cygwin/python3-${PYTHON_WHEEL_NAME}.README"
+src_install() {
+  cd ${B}
+  python_wheel_install
+  # install Cygwin README
+  insinto /usr/share/doc/Cygwin
+  newins ${C}/README python2-${PYTHON_WHEEL_NAME}.README
+  newins ${C}/README python3-${PYTHON_WHEEL_NAME}.README
+}
