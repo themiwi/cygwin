@@ -62,8 +62,8 @@
 +
 +Please read *all* of the information on unsubscribing that is available
 +starting at the above URL.
---- CYGWIN-PATCHES/python2-paramiko.README	1970-01-01 01:00:00.000000000 +0100
-+++ CYGWIN-PATCHES/python2-paramiko.README	2018-07-18 21:32:59.271087000 +0200
+--- CYGWIN-PATCHES/README	1970-01-01 01:00:00.000000000 +0100
++++ CYGWIN-PATCHES/README	2018-07-18 21:32:59.271087000 +0200
 @@ -0,0 +1,117 @@
 +python-paramiko
 +------------------------------------------

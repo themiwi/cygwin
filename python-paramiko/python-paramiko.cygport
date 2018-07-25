@@ -22,6 +22,9 @@ python3_paramiko_REQUIRES="python3-cryptography python3-nacl python3-bcrypt"
 
 src_install() {
   cd ${B}
-  cp ${C}/python2-paramiko.README ${C}/python3-paramiko.README
   python_wheel_install
+  # install Cygwin README
+  insinto /usr/share/doc/Cygwin
+  newins ${C}/README python2-${PYTHON_WHEEL_NAME}.README
+  newins ${C}/README python3-${PYTHON_WHEEL_NAME}.README
 }
