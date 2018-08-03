@@ -1,0 +1,8 @@
+--- origsrc/paramiko-2.4.1/setup.py	2018-03-13 02:30:18.000000000 +0100
++++ src/paramiko-2.4.1/setup.py	2018-08-03 15:39:20.002220300 +0200
+@@ -77,4 +77,5 @@ setup(
+         'pynacl>=1.0.1',
+         'pyasn1>=0.1.7',
+     ],
++    test_suite='tests',
+ )

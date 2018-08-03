@@ -12,6 +12,15 @@ are supported. SFTP client and server mode are both supported too."
 HOMEPAGE="http://www.paramiko.org"
 DEPEND="python2 python3"
 ARCH=noarch
+PATCH_URI="
+  2.4.1-test-suite-directory.patch
+  "
 
 python2_paramiko_REQUIRES="python2-cryptography python2-nacl python2-bcrypt"
 python3_paramiko_REQUIRES="python3-cryptography python3-nacl python3-bcrypt"
+
+src_test() {
+  cd ${B}
+  ${PYTHON2} setup.py test || error "python2 tests failed"
+  ${PYTHON3} setup.py test || error "python3 tests failed"
+}
