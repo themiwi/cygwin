@@ -7,3 +7,9 @@ CATEGORY="Python"
 SUMMARY="Modern password hashing for your software and your servers"
 DESCRIPTION="Password hashing library for Python"
 DEPEND="python2 python2-devel python3 python3-devel libffi-devel"
+
+src_test() {
+  cd ${B}
+  ${PYTHON2} setup.py test || error "python2 tests failed"
+  ${PYTHON3} setup.py test || error "python3 tests failed"
+}
