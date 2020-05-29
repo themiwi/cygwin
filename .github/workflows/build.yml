@@ -18,11 +18,11 @@ jobs:
     #    cache-name: cache-cygwin-install
     #  with:
     #    path: C:/Cygwin64
-    #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
+    #    key: ${{ runner.os }}-build-x86_64-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
     #    restore-keys: |
-    #      ${{ runner.os }}-build-${{ env.cache-name }}-
-    #      ${{ runner.os }}-build-
-    #      ${{ runner.os }}-
+    #      ${{ runner.os }}-x86_64-build-${{ env.cache-name }}-
+    #      ${{ runner.os }}-x86_64-build-
+    #      ${{ runner.os }}-x86_64-
 
     - name: Install Cygwin
       run: choco install -y cygwin --params "/InstallDir:C:\Cygwin64 /NoStartMenu"
@@ -30,10 +30,10 @@ jobs:
     - name: Install Cygwin packages
       run: |
         $cygpackages = @( 'cygport', 'git',
-          'python', 'python-devel',
-          'python3', 'python3-devel',
-          'python37', 'python37-pip', 'python37-devel', 'python37-wheel',
-          'python38', 'python38-pip', 'python38-devel', 'python38-wheel',
+          'python',   'python-pip',   'python-devel',   'python-wheel',   'python-six',   'python-cffi',   'python-pycparser',   'python-test',
+          'python3',  'python3-pip',  'python3-devel',  'python3-wheel',  'python3-six',  'python3-cffi',  'python3-pycparser',  'python3-test',
+          'python37', 'python37-pip', 'python37-devel', 'python37-wheel', 'python37-six', 'python37-cffi', 'python37-pycparser', 'python37-test',
+          'python38', 'python38-pip', 'python38-devel', 'python38-wheel', 'python38-six', 'python38-cffi', 'python38-pycparser', 'python38-test',
           'python-pip-wheel', 'python-setuptools-wheel',
           'libffi-devel'
           )
@@ -44,9 +44,10 @@ jobs:
       run: |
         C:\Cygwin64\bin\bash.exe --norc --noprofile ${{ github.Workspace }}\build.sh python-bcrypt/python-bcrypt.cygport fetch all
 
-    - name: List workspace content
-      run: |
-        Get-ChildItem -Recurse -Name -File -Path ${{ github.Workspace }}\python-bcrypt\
+    - uses: actions/upload-artifact@v2
+      with:
+        name: python-bcrypt
+        path: python-bcrypt/python-bcrypt-*.x86_64/dist/python-bcrypt/
 
   python-nacl:
     runs-on: windows-latest
@@ -59,11 +60,11 @@ jobs:
     #    cache-name: cache-cygwin-install
     #  with:
     #    path: C:/Cygwin64
-    #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
+    #    key: ${{ runner.os }}-build-x86_64-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
     #    restore-keys: |
-    #      ${{ runner.os }}-build-${{ env.cache-name }}-
-    #      ${{ runner.os }}-build-
-    #      ${{ runner.os }}-
+    #      ${{ runner.os }}-x86_64-build-${{ env.cache-name }}-
+    #      ${{ runner.os }}-x86_64-build-
+    #      ${{ runner.os }}-x86_64-
 
     - name: Install Cygwin
       run: choco install -y cygwin --params "/InstallDir:C:\Cygwin64 /NoStartMenu"
@@ -71,25 +72,24 @@ jobs:
     - name: Install Cygwin packages
       run: |
         $cygpackages = @( 'cygport', 'git',
-          'python', 'python-devel',
-          'python3', 'python3-devel',
-          'python37', 'python37-pip', 'python37-devel', 'python37-wheel',
-          'python38', 'python38-pip', 'python38-devel', 'python38-wheel',
+          'python',   'python-pip',   'python-devel',   'python-wheel',   'python-six',   'python-cffi',   'python-pycparser',   'python-test',
+          'python3',  'python3-pip',  'python3-devel',  'python3-wheel',  'python3-six',  'python3-cffi',  'python3-pycparser',  'python3-test',
+          'python37', 'python37-pip', 'python37-devel', 'python37-wheel', 'python37-six', 'python37-cffi', 'python37-pycparser', 'python37-test',
+          'python38', 'python38-pip', 'python38-devel', 'python38-wheel', 'python38-six', 'python38-cffi', 'python38-pycparser', 'python38-test',
           'python-pip-wheel', 'python-setuptools-wheel',
           'libffi-devel', 'libsodium-devel'
           )
         C:\Cygwin64\cygwinsetup.exe -v -W -n -q -g -P ($cygpackages -join ',')
         Wait-Process -Name cygwinsetup
 
-    - uses: actions/checkout@v2
-
     - name: Build
       run: |
         C:\Cygwin64\bin\bash.exe --norc --noprofile ${{ github.Workspace }}\build.sh python-nacl/python-nacl.cygport fetch all
 
-    - name: List workspace content
-      run: |
-        Get-ChildItem -Recurse -Name -File -Path ${{ github.Workspace }}\python-nacl\
+    - uses: actions/upload-artifact@v2
+      with:
+        name: python-nacl
+        path: python-nacl/python-nacl-*.x86_64/dist/python-nacl/
 
   python-paramiko:
     runs-on: windows-latest
@@ -102,11 +102,11 @@ jobs:
     #    cache-name: cache-cygwin-install
     #  with:
     #    path: C:/Cygwin64
-    #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
+    #    key: ${{ runner.os }}-build-x86_64-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
     #    restore-keys: |
-    #      ${{ runner.os }}-build-${{ env.cache-name }}-
-    #      ${{ runner.os }}-build-
-    #      ${{ runner.os }}-
+    #      ${{ runner.os }}-x86_64-build-${{ env.cache-name }}-
+    #      ${{ runner.os }}-x86_64-build-
+    #      ${{ runner.os }}-x86_64-
 
     - name: Install Cygwin
       run: choco install -y cygwin --params "/InstallDir:C:\Cygwin64 /NoStartMenu"
@@ -114,11 +114,16 @@ jobs:
     - name: Install Cygwin packages
       run: |
         $cygpackages = @( 'cygport', 'git',
-          'python', 'python-devel',
-          'python3', 'python3-devel',
-          'python37', 'python37-pip', 'python37-devel', 'python37-wheel',
-          'python38', 'python38-pip', 'python38-devel', 'python38-wheel',
-          'python-pip-wheel', 'python-setuptools-wheel'
+          'python',   'python-pip',   'python-devel',   'python-wheel',   'python-six',   'python-cffi',   'python-pycparser',   'python-test',
+          'python3',  'python3-pip',  'python3-devel',  'python3-wheel',  'python3-six',  'python3-cffi',  'python3-pycparser',  'python3-test',
+          'python37', 'python37-pip', 'python37-devel', 'python37-wheel', 'python37-six', 'python37-cffi', 'python37-pycparser', 'python37-test',
+          'python38', 'python38-pip', 'python38-devel', 'python38-wheel', 'python38-six', 'python38-cffi', 'python38-pycparser', 'python38-test',
+          'python-cryptography', 'python-nacl', 'python-bcrypt',
+          'python3-cryptography', 'python3-nacl', 'python3-bcrypt',
+          'python37-cryptography', 'python37-nacl', 'python37-bcrypt',
+          'python38-cryptography', 'python38-nacl', 'python38-bcrypt',
+          'python-pip-wheel', 'python-setuptools-wheel',
+          'python-cryptography', 'python-nacl', 'python-bcrypt'
           )
         C:\Cygwin64\cygwinsetup.exe -v -W -n -q -g -P ($cygpackages -join ',')
         Wait-Process -Name cygwinsetup
@@ -127,9 +132,10 @@ jobs:
       run: |
         C:\Cygwin64\bin\bash.exe --norc --noprofile ${{ github.Workspace }}\build.sh python-paramiko/python-paramiko.cygport fetch all
 
-    - name: List workspace content
-      run: |
-        Get-ChildItem -Recurse -Name -File -Path ${{ github.Workspace }}\python-paramiko\
+    - uses: actions/upload-artifact@v2
+      with:
+        name: python-paramiko
+        path: python-paramiko/python-paramiko-*.noarch/dist/python-paramiko/
 
   ssh-pageant:
     runs-on: windows-latest
@@ -142,11 +148,11 @@ jobs:
     #    cache-name: cache-cygwin-install
     #  with:
     #    path: C:/Cygwin64
-    #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
+    #    key: ${{ runner.os }}-build-x86_64-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
     #    restore-keys: |
-    #      ${{ runner.os }}-build-${{ env.cache-name }}-
-    #      ${{ runner.os }}-build-
-    #      ${{ runner.os }}-
+    #      ${{ runner.os }}-x86_64-build-${{ env.cache-name }}-
+    #      ${{ runner.os }}-x86_64-build-
+    #      ${{ runner.os }}-x86_64-
 
     - name: Install Cygwin
       run: choco install -y cygwin --params "/InstallDir:C:\Cygwin64 /NoStartMenu"
@@ -177,11 +183,11 @@ jobs:
     #    cache-name: cache-cygwin-install
     #  with:
     #    path: C:/Cygwin64
-    #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
+    #    key: ${{ runner.os }}-build-x86_64-${{ env.cache-name }}-${{ hashFiles('**/*.cygport') }}
     #    restore-keys: |
-    #      ${{ runner.os }}-build-${{ env.cache-name }}-
-    #      ${{ runner.os }}-build-
-    #      ${{ runner.os }}-
+    #      ${{ runner.os }}-x86_64-build-${{ env.cache-name }}-
+    #      ${{ runner.os }}-x86_64-build-
+    #      ${{ runner.os }}-x86_64-
 
     - name: Install Cygwin
       run: choco install -y cygwin --params "/InstallDir:C:\Cygwin64 /NoStartMenu"
