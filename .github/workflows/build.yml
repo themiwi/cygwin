@@ -7,6 +7,23 @@ on:
     branches: [ master ]
 
 jobs:
+  docker-image:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Docker login
+      uses: azure/docker-login@v1
+      with:
+        login-server: docker.pkg.github.com
+        username: $GITHUB_ACTOR
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Builds and pushes docker image
+      run: |
+        docker build --pull -t docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest .github/docker/cygwin-build
+        docker push docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest
+
   python-bcrypt:
     runs-on: windows-latest
     steps:
