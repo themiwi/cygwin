@@ -20,9 +20,10 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Builds and pushes docker image
-      run: |
-        docker build --pull -t docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest .github/docker/cygwin-build
-        docker push docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest
+      run: docker build --pull -t docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest .github/docker/cygwin-build
+
+    - name: Pushes the docker image
+      run: docker push docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest
 
   python-bcrypt:
     runs-on: windows-latest
