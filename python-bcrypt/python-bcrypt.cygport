@@ -1,15 +1,26 @@
+PYTHON_WHEEL_VERSIONS=3.6:default
 inherit python-wheel
 
 NAME="python-bcrypt"
-VERSION="3.1.4"
+VERSION="3.2.0"
 RELEASE="1"
 CATEGORY="Python"
 SUMMARY="Modern password hashing for your software and your servers"
 DESCRIPTION="Password hashing library for Python"
-DEPEND="python2 python2-devel python3 python3-devel libffi-devel"
+python36_bcrypt_REQUIRES+=" python36-six python36-cffi"
+python37_bcrypt_REQUIRES+=" python37-six python37-cffi"
+python38_bcrypt_REQUIRES+=" python38-six python38-cffi"
+BUILD_REQUIRES+=" ${python36_bcrypt_REQUIRES} python36-devel python36-wheel python36-test"
+BUILD_REQUIRES+=" ${python37_bcrypt_REQUIRES} python37-devel python37-wheel python37-test"
+BUILD_REQUIRES+=" ${python38_bcrypt_REQUIRES} python38-devel python38-wheel python38-test"
+BUILD_REQUIRES+=" libffi-devel"
 
 src_test() {
+  local ver
+
   cd ${B}
-  ${PYTHON2} setup.py test || error "python2 tests failed"
-  ${PYTHON3} setup.py test || error "python3 tests failed"
+  for ver in ${PYTHON_WHEEL_VERSIONS//:/ }
+  do
+    /usr/bin/python${ver} setup.py test "${@}" || error "python${ver} tests failed"
+  done
 }
