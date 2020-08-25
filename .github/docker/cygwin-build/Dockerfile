@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows:1909
+FROM mcr.microsoft.com/windows/servercore:1909-amd64
 
 LABEL name="Cygwin Build Container"
 LABEL description="This container is a Windows container for building Cygwin packages."
