@@ -1,5 +1,5 @@
 NAME="tmux"
-VERSION="2.6"
+VERSION="3.1b"
 RELEASE="1"
 CATEGORY="Utils"
 SUMMARY="Terminal multiplexer"
