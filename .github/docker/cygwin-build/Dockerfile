@@ -5,7 +5,7 @@ LABEL description="This container is a Windows container for building Cygwin pac
 LABEL maintainer="Michael Wild <michael.andreas.wild@gmail.com>"
 
 # Install chocolatey
-RUN @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" \
+RUN powershell.exe \
   -NoProfile -InputFormat None -ExecutionPolicy Bypass \
   -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" \
   && SETX PATH "%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
