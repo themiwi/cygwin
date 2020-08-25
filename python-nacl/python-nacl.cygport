@@ -1,6 +1,6 @@
 NAME="python-nacl"
 ORIG_PN="PyNaCl"
-VERSION="1.2.1"
+VERSION="1.4.0"
 RELEASE="1"
 CATEGORY="Python"
 SUMMARY="Python binding to the Networking and Cryptography (NaCl) library"
@@ -9,14 +9,25 @@ Networking and Cryptography library. These libraries have a stated goal of
 improving usability, security and speed. It supports Python 2.7 and 3.4+ as
 well as PyPy 2.6+."
 HOMEPAGE="https://pynacl.readthedocs.io/en/stable/"
-DEPEND="python2 python2-devel python3 python3-devel libsodium-devel"
+python36_nacl_REQUIRES+=" python36-six python36-cffi"
+python37_nacl_REQUIRES+=" python37-six python37-cffi"
+python38_nacl_REQUIRES+=" python38-six python38-cffi"
+BUILD_REQUIRES+=" ${python36_nacl_REQUIRES} python36-wheel python36-devel"
+BUILD_REQUIRES+=" ${python37_nacl_REQUIRES} python37-wheel python37-devel"
+BUILD_REQUIRES+=" ${python38_nacl_REQUIRES} python38-wheel python38-devel"
+BUILD_REQUIRES+=" libffi-devel libsodium-devel"
 # Instruct nacl to use system-installed libsodium
 export SODIUM_INSTALL=system
 
+PYTHON_WHEEL_VERSIONS=3.6:default
 inherit python-wheel
 
 src_test() {
+  local ver
+
   cd ${B}
-  ${PYTHON2} setup.py test || error "python2 tests failed"
-  ${PYTHON3} setup.py test || error "python3 tests failed"
+  for ver in ${PYTHON_WHEEL_VERSIONS//:/ }
+  do
+    /usr/bin/python${ver} setup.py test "${@}" || error "python${ver} tests failed"
+  done
 }
