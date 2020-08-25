@@ -1,7 +1,8 @@
+PYTHON_WHEEL_VERSIONS=3.6:default
 inherit python-wheel
 
 NAME="python-paramiko"
-VERSION="2.4.1"
+VERSION="2.7.1"
 RELEASE="1"
 CATEGORY="Python"
 SUMMARY="Python library for SSH2 connections"
@@ -10,17 +11,23 @@ Emphasis is on using SSH2 as an alternative to SSL for making secure
 connections between python scripts. All major ciphers and hash methods
 are supported. SFTP client and server mode are both supported too."
 HOMEPAGE="http://www.paramiko.org"
-DEPEND="python2 python3"
 ARCH=noarch
 PATCH_URI="
   2.4.1-test-suite-directory.patch
   "
-
-python2_paramiko_REQUIRES="python2-cryptography python2-nacl python2-bcrypt"
-python3_paramiko_REQUIRES="python3-cryptography python3-nacl python3-bcrypt"
+python36_paramiko_REQUIRES+=" python36-cryptography python36-nacl python36-bcrypt"
+python37_paramiko_REQUIRES+=" python37-cryptography python37-nacl python37-bcrypt"
+python38_paramiko_REQUIRES+=" python38-cryptography python38-nacl python38-bcrypt"
+BUILD_REQUIRES+=" ${python36_paramiko_REQUIRES} python36-wheel python36-test"
+BUILD_REQUIRES+=" ${python37_paramiko_REQUIRES} python37-wheel python37-test"
+BUILD_REQUIRES+=" ${python38_paramiko_REQUIRES} python37-wheel python38-test"
 
 src_test() {
+  local ver
+
   cd ${B}
-  ${PYTHON2} setup.py test || error "python2 tests failed"
-  ${PYTHON3} setup.py test || error "python3 tests failed"
+  for ver in ${PYTHON_WHEEL_VERSIONS//:/ }
+  do
+    /usr/bin/python${ver} setup.py test "${@}" || error "python${ver} tests failed"
+  done
 }
