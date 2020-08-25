@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/nanoserver:10.0.17763.1397-amd64
+FROM mcr.microsoft.com/windows/servercore:10.0.17763.1397-amd64
 
 LABEL name="Cygwin Build Container"
 LABEL description="This container is a Windows container for building Cygwin packages."
