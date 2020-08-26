@@ -6,8 +6,7 @@ CATEGORY="Python"
 SUMMARY="Python binding to the Networking and Cryptography (NaCl) library"
 DESCRIPTION="PyNaCl is a Python binding to libsodium, which is a fork of the
 Networking and Cryptography library. These libraries have a stated goal of
-improving usability, security and speed. It supports Python 2.7 and 3.4+ as
-well as PyPy 2.6+."
+improving usability, security and speed."
 HOMEPAGE="https://pynacl.readthedocs.io/en/stable/"
 python36_nacl_REQUIRES+=" python36-cffi"
 python37_nacl_REQUIRES+=" python37-cffi"
