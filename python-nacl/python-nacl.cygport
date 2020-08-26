@@ -1,7 +1,7 @@
 NAME="python-nacl"
 ORIG_PN="PyNaCl"
 VERSION="1.4.0"
-RELEASE="1"
+RELEASE="2"
 CATEGORY="Python"
 SUMMARY="Python binding to the Networking and Cryptography (NaCl) library"
 DESCRIPTION="PyNaCl is a Python binding to libsodium, which is a fork of the
@@ -9,12 +9,12 @@ Networking and Cryptography library. These libraries have a stated goal of
 improving usability, security and speed. It supports Python 2.7 and 3.4+ as
 well as PyPy 2.6+."
 HOMEPAGE="https://pynacl.readthedocs.io/en/stable/"
-python36_nacl_REQUIRES+=" python36-six python36-cffi"
-python37_nacl_REQUIRES+=" python37-six python37-cffi"
-python38_nacl_REQUIRES+=" python38-six python38-cffi"
-BUILD_REQUIRES+=" ${python36_nacl_REQUIRES} python36-wheel python36-devel"
-BUILD_REQUIRES+=" ${python37_nacl_REQUIRES} python37-wheel python37-devel"
-BUILD_REQUIRES+=" ${python38_nacl_REQUIRES} python38-wheel python38-devel"
+python36_nacl_REQUIRES+=" python36-cffi"
+python37_nacl_REQUIRES+=" python37-cffi"
+python38_nacl_REQUIRES+=" python38-cffi"
+BUILD_REQUIRES+=" ${python36_nacl_REQUIRES} python36-six python36-wheel python36-devel"
+BUILD_REQUIRES+=" ${python37_nacl_REQUIRES} python37-six python37-wheel python37-devel"
+BUILD_REQUIRES+=" ${python38_nacl_REQUIRES} python38-six python38-wheel python38-devel"
 BUILD_REQUIRES+=" libffi-devel libsodium-devel"
 # Instruct nacl to use system-installed libsodium
 export SODIUM_INSTALL=system

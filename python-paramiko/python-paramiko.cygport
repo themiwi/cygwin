@@ -15,12 +15,9 @@ ARCH=noarch
 PATCH_URI="
   2.4.1-test-suite-directory.patch
   "
-python36_paramiko_REQUIRES+=" python36-cryptography python36-nacl python36-bcrypt"
-python37_paramiko_REQUIRES+=" python37-cryptography python37-nacl python37-bcrypt"
-python38_paramiko_REQUIRES+=" python38-cryptography python38-nacl python38-bcrypt"
-BUILD_REQUIRES+=" ${python36_paramiko_REQUIRES} python36-wheel python36-test"
-BUILD_REQUIRES+=" ${python37_paramiko_REQUIRES} python37-wheel python37-test"
-BUILD_REQUIRES+=" ${python38_paramiko_REQUIRES} python37-wheel python38-test"
+BUILD_REQUIRES+=" python36-cryptography python36-nacl python36-bcrypt python36-wheel python36-test"
+BUILD_REQUIRES+=" python37-cryptography python37-nacl python37-bcrypt python37-wheel python37-test"
+BUILD_REQUIRES+=" python38-cryptography python38-nacl python38-bcrypt python37-wheel python38-test"
 
 src_test() {
   local ver
