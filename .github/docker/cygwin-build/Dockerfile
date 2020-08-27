@@ -4,11 +4,14 @@ LABEL name="Cygwin Build Container"
 LABEL description="This container is a Windows container for building Cygwin packages."
 LABEL maintainer="Michael Wild <michael.andreas.wild@gmail.com>"
 
+ENV CYGWIN winsymlinks:lnk
+
+ADD setup-x86_64.exe /tmp/setup-x86_64.exe
+
 RUN powershell -Command " \
-    mkdir /tmp -ErrorAction SilentlyContinue; \
     cd /tmp; \
-    Invoke-WebRequest -Uri https://www.cygwin.com/setup-x86_64.exe -OutFile setup-x86_64.exe; \
     $cygpackages = @( \
+      'default', \
       'autoconf', 'automake', 'libtool', 'make', 'pkg-config', \
       'cygport', \
       'gettext-devel', \
@@ -26,7 +29,7 @@ RUN powershell -Command " \
       'python-cryptography', \
       'wget' \
     ); \
-    ./setup-x86_64.exe -W -n -q -R C:/Cygwin64 -s http://mirrors.kernel.org/sourceware/cygwin/ \
+    ./setup-x86_64.exe -B -W -n -q -R C:/Cygwin64 -s http://mirrors.kernel.org/sourceware/cygwin/ \
       -P ($cygpackages -join ','); \
     Wait-Process -Name setup-x86_64; \
     cd ..; \
