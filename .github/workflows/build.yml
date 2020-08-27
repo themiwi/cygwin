@@ -12,18 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Docker login
-      uses: azure/docker-login@v1
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1
       with:
-        login-server: docker.pkg.github.com
-        username: $GITHUB_ACTOR
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Builds and pushes docker image
-      run: docker build --pull -t docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest .github/docker/cygwin-build
-
-    - name: Pushes the docker image
-      run: docker push docker.pkg.github.com/wildmichael/cygwin/cygwin-build:latest
+        path: .github/docker/cygwin-build
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        always_pull: true
+        repository: michaelwild/cygwin-build
+        tag_with_ref: true
+        add_git_labels: true
 
   #python-bcrypt:
   #  runs-on: windows-latest
